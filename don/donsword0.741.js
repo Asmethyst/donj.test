@@ -621,20 +621,7 @@ var musicnum=0
 var donX=40;
 var donY=100;
 var loadmax=67;
-function loadgraph(){
-  cx3.fillStyle = "#e4e4e4";
-  var A=loadstate/loadmax*600;
-    cx3.fillRect(100, 200, A, 50);
-    createjs.Tween.get(Cstar)
-    .to({x:A+100},300);
-  loadstate+=1;
-  console.log(loadstate,loadmax);
-  if(loadstate>=loadmax){
-    createjs.Tween.get(Cstar)
-.to({x:700},300);
-    load2();
-  }
-}
+
 DPimg.src=atrbute_src[0];
   DPimg.onload=function(){loadgraph();
 			 }
@@ -923,74 +910,7 @@ cx6.globalAlpha=0;
 for(var i=0 ; i<45; i++){
   s = new createjs.Bitmap(eltear_src[i]);
   donpaiList.push(s);
-  };
-function load2(){
-    loadstate+=1;
-    console.log(loadstate,loadmax);
-tweeNstar.paused=true;
-  stage.removeChild(Cstar);
-  cx3.fillStyle = "rgb(0,0,0)";
-  cx3.fillRect(0, 0, 800, 600);
-  cx3.fillStyle = "#007fd9";
-  cx3.fillRect(100, 200, 600, 50);
-  cx3.font = "24px 'Century Gothic'";
-  cx3.fillStyle = "#e4e4e4";
-  　cx3.fillText( "画面をクリック（音が出ます）",240,360)
-  　cx3.fillText( "click to start",340,400)
-  }
-  Yakucheck();
-  for(var i=0;i<6;i++){
-    var A=Math.floor(Math.random()*45);
-    s = new createjs.Bitmap(eltear_src[A]);
-    s.x=-120;
-    s.y=5;
-    ary.push(s);
-  };
-  for(var j=0;j<6;j++){
-    var A=Math.floor(Math.random()*45);
-    s = new createjs.Bitmap(eltear_src[A]);
-    s.x=920;
-    s.y=425;
-    ary.push(s);
-  }
-  //console.log(ary);
-  field.addChild(ary[0]);
-  field.addChild(ary[1]);
-  field.addChild(ary[2]);
-  field.addChild(ary[3]);
-  field.addChild(ary[4]);
-  field.addChild(ary[5]);
-  field.addChild(ary[6]);
-  field.addChild(ary[7]);
-  field.addChild(ary[8]);
-  field.addChild(ary[9]);
-  field.addChild(ary[10]);
-  field.addChild(ary[11]);
-  createjs.Tween.get(ary[0])
-  .to({x:35},60)
-  createjs.Tween.get(ary[1])
-  .to({x:156},70)
-  createjs.Tween.get(ary[2])
-  .to({x:277},80)
-  createjs.Tween.get(ary[3])
-  .to({x:398},90)
-  createjs.Tween.get(ary[4])
-  .to({x:519},100)
-  createjs.Tween.get(ary[5])
-  .to({x:640},110)
-  createjs.Tween.get(ary[6])
-  .to({x:640},60)
-  createjs.Tween.get(ary[7])
-  .to({x:519},70)
-  createjs.Tween.get(ary[8])
-  .to({x:398},80)
-  createjs.Tween.get(ary[9])
-  .to({x:277},90)
-  createjs.Tween.get(ary[10])
-  .to({x:156},100)
-  createjs.Tween.get(ary[11])
-  .to({x:35},110)
-  .call(load2);  
+  }; 
   }}}}}}}}}}
 }}}}}}}}}}
   }}}}}}}}}}
@@ -1004,6 +924,89 @@ cx3.font = "24px 'Century Gothic'";
 cx3.fillStyle = "#e4e4e4";
 　cx3.fillText( "Now Loading…",300,360)
 }
+function loadgraph(){
+  cx3.fillStyle = "#e4e4e4";
+  var A=loadstate/loadmax*600;
+    cx3.fillRect(100, 200, A, 50);
+    createjs.Tween.get(Cstar)
+    .to({x:A+100},300);
+  loadstate+=1;
+  console.log(loadstate,loadmax);
+  if(loadstate>=loadmax){
+    createjs.Tween.get(Cstar)
+.to({x:700},300);
+    loadtitle();
+  }
+}
+function load2(){
+  loadstate+=1;
+  console.log(loadstate,loadmax);
+tweeNstar.paused=true;
+stage.removeChild(Cstar);
+cx3.fillStyle = "rgb(0,0,0)";
+cx3.fillRect(0, 0, 800, 600);
+cx3.fillStyle = "#007fd9";
+cx3.fillRect(100, 200, 600, 50);
+cx3.font = "24px 'Century Gothic'";
+cx3.fillStyle = "#e4e4e4";
+　cx3.fillText( "画面をクリック（音が出ます）",240,360)
+　cx3.fillText( "click to start",340,400)
+}
+function loadtitle(){
+Yakucheck();
+for(var i=0;i<6;i++){
+  var A=Math.floor(Math.random()*45);
+  s = new createjs.Bitmap(eltear_src[A]);
+  s.x=-120;
+  s.y=5;
+  ary.push(s);
+};
+for(var j=0;j<6;j++){
+  var A=Math.floor(Math.random()*45);
+  s = new createjs.Bitmap(eltear_src[A]);
+  s.x=920;
+  s.y=425;
+  ary.push(s);
+}
+//console.log(ary);
+field.addChild(ary[0]);
+field.addChild(ary[1]);
+field.addChild(ary[2]);
+field.addChild(ary[3]);
+field.addChild(ary[4]);
+field.addChild(ary[5]);
+field.addChild(ary[6]);
+field.addChild(ary[7]);
+field.addChild(ary[8]);
+field.addChild(ary[9]);
+field.addChild(ary[10]);
+field.addChild(ary[11]);
+createjs.Tween.get(ary[0])
+.to({x:35},60)
+createjs.Tween.get(ary[1])
+.to({x:156},70)
+createjs.Tween.get(ary[2])
+.to({x:277},80)
+createjs.Tween.get(ary[3])
+.to({x:398},90)
+createjs.Tween.get(ary[4])
+.to({x:519},100)
+createjs.Tween.get(ary[5])
+.to({x:640},110)
+createjs.Tween.get(ary[6])
+.to({x:640},60)
+createjs.Tween.get(ary[7])
+.to({x:519},70)
+createjs.Tween.get(ary[8])
+.to({x:398},80)
+createjs.Tween.get(ary[9])
+.to({x:277},90)
+createjs.Tween.get(ary[10])
+.to({x:156},100)
+createjs.Tween.get(ary[11])
+.to({x:35},110)
+.call(load2); 
+};
 	canvas5.onmousemove = mouseMoveListener;
 	function mouseMoveListener(e) {
 		var rect = e.target.getBoundingClientRect();

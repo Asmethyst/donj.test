@@ -1,4 +1,4 @@
-//var0.74 抜き追加　スキルなし
+//var0.74 抜き追加
 window.onload = function(){
 draw();
 };
@@ -46,6 +46,18 @@ function draw(){
   yakumap.alpha=0;
   var yakumapY=0;
   var raidmapY=0;
+var graphics;
+graphics=new createjs.Graphics();
+graphics
+  .beginRadialGradientFill(["white","orange"],[0.0,1.0],0,0,20,0,0,100)
+  .drawPolyStar(0, 0, 50, 5, 0.4, -90);
+  var Cstar = new createjs.Shape(graphics);
+  Cstar.x=100;
+  Cstar.y=225;
+stage.addChild(Cstar); 
+var tweeNstar;
+tweeNstar=createjs.Tween.get(Cstar, {loop: true})
+.to({rotation:360},1200);
   //アップデートする
   createjs.Ticker.timingMode = createjs.Ticker.RAF;
   createjs.Ticker.addEventListener("tick",function(){
@@ -77,7 +89,6 @@ function draw(){
 
 var LP =new Array(0,75000,75000,75000,75000);
 //LP[0]:0->半荘150000/スキルあり 1->半荘300000/スキルあり 2->ミリオネア 3->無限を予定
-//6-9:ベルドレイド？
 var LPtemp=new Array(0,0,0,0,0)
 var chara =new Array(0,0,0,0,0)
 var Mpai = 0;
@@ -89,7 +100,7 @@ var cputype=new Array(0,0,0,0,0)
 var typerand=new Array(0,0,0,0,0)
 //覚醒ゲージ0-30
 var DP =new Array(0,0,0,0,0)
-//バフ 1スキン 2マナシールド 3ネイチャ 4ナソコア 5ほうせんきょ 6凍結
+//バフ 1スキン 2マナシールド 3ネイチャ
 var Buff =new Array(0,[],[],[],[])
 //再発動間隔測る用の配列
 var BuffCT = [];
@@ -351,8 +362,7 @@ var handE6= new Image();
 var handE7= new Image();
 var handE8= new Image();
 var handE9= new Image();
-var handE10= new Image();//カンで追加される分
-var handE11= new Image();//カンで追加される分
+//var handE10= new Image();
 var etitle= new Image();
 var e1= new Image();
 var e2= new Image();
@@ -611,399 +621,302 @@ var musicnum=0
 var donX=40;
 var donY=100;
 var loadmax=67;
+function loadgraph(){
+  cx3.fillStyle = "#e4e4e4";
+  var A=loadstate/loadmax*600;
+    cx3.fillRect(100, 200, A, 50);
+    createjs.Tween.get(Cstar)
+    .to({x:A+100},300);
+  loadstate+=1;
+  console.log(loadstate,loadmax);
+  if(loadstate>=loadmax){
+    createjs.Tween.get(Cstar)
+.to({x:700},300);
+    load2();
+  }
+}
 DPimg.src=atrbute_src[0];
-  DPimg.onload=function(){
-  cx3.fillStyle = "#e4e4e4";
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-  loadstate+=1;}
+  DPimg.onload=function(){loadgraph();
+			 }
 e17.src=win_src[7]
-e17.onload=function(){
-  cx3.fillStyle = "#e4e4e4";
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-  loadstate+=1;
+e17.onload=function(){loadgraph();
   e17.src=win_src[8]
-e17.onload=function(){
-  cx3.fillStyle = "#e4e4e4";
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-  loadstate+=1;
+e17.onload=function(){loadgraph();
   e17.src=win_src[9]
-  e17.onload=function(){
-    cx3.fillStyle = "#e4e4e4";
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-    loadstate+=1;
+  e17.onload=function(){loadgraph();
   }}}
 e18.src=eltearB_src[0];
-e18.onload=function(){
-  cx3.fillStyle = "#e4e4e4";
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-  loadstate+=1;
+e18.onload=function(){loadgraph();
   e18.src=eltearB_src[1];
-  e18.onload=function(){
-    cx3.fillStyle = "#e4e4e4";
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-    loadstate+=1;
+  e18.onload=function(){loadgraph();
     e18.src=eltearB_src[2];
-    e18.onload=function(){
-      cx3.fillStyle = "#e4e4e4";
-      cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-      loadstate+=1;
+    e18.onload=function(){loadgraph();
       e18.src=eltearB_src[3];
-      e18.onload=function(){
-        cx3.fillStyle = "#e4e4e4";
-        cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-        loadstate+=1;
+      e18.onload=function(){loadgraph();
         e18.src=eltearB_src[4];
-        e18.onload=function(){
-          cx3.fillStyle = "#e4e4e4";
-          cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-          loadstate+=1;
+        e18.onload=function(){loadgraph();
         }}}}}
 etitle.src="don/Don_title.png";
-etitle.onload=function(){
-  cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;}
+etitle.onload=function(){loadgraph();}
 e10.src=chrimg_src[0]
-e10.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+e10.onload=function(){loadgraph();
 e10.src=chrimg_src[1]
-e10.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+e10.onload=function(){loadgraph();
 e10.src=chrimg_src[2]
-e10.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+e10.onload=function(){loadgraph();
 e10.src=chrimg_src[3]
-e10.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+e10.onload=function(){loadgraph();
 }}}}
 BGimg.src=bgimg_src[1]
-BGimg.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+BGimg.onload=function(){loadgraph();
 }
 epic.src=epic_src[0]
-epic.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+epic.onload=function(){loadgraph();
 epic.src=epic_src[1]
-epic.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+epic.onload=function(){loadgraph();
 epic.src=epic_src[2]
-epic.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+epic.onload=function(){loadgraph();
 epic.src=epic_src[3]
-epic.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+epic.onload=function(){loadgraph();
 epic.src=epic_src[4]
-epic.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+epic.onload=function(){loadgraph();
 epic.src=epic_src[5]
-epic.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+epic.onload=function(){loadgraph();
 epic.src=epic_src[6]
-epic.onload=function(){
-cx3.fillStyle = "#e4e4e4";
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
-loadstate+=1;
+epic.onload=function(){loadgraph();
 }}
 }}}}}
 eltear.src=eltear_src[0]
 eltear.onload=function(){
-cx3.fillStyle = "#e4e4e4";
 cx6.drawImage(eltear,donX,donY,60,78)
 donX+=60;
-loadstate+=1;
-cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[1]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[2]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[3]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[4]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[5]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[6]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[7]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[8]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX=40;
   donY+=78
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[9]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[10]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 console.log("harmony!");
 eltear.src=eltear_src[11]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[12]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[13]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[14]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[15]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[16]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[17]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX=40;
   donY+=78
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 console.log("critical!")
 eltear.src=eltear_src[18]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[19]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[20]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[21]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[22]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[23]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[24]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[25]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[26]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX=40;
   donY+=78
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[27]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[28]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[29]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[30]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[31]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+	loadgraph();
 eltear.src=eltear_src[32]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[33]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 console.log("destroy!")
 eltear.src=eltear_src[34]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[35]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX=40;
   donY+=78
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[36]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[37]
 eltear.onload=function(){
   cx6.drawImage(eltear,donX,donY,60,78)
   donX+=60;
-  loadstate+=1;
-  cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[38]
 	eltear.onload=function(){
     cx6.drawImage(eltear,donX,donY,60,78)
     donX+=60;
-    loadstate+=1;
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[39]
 	eltear.onload=function(){
     cx6.drawImage(eltear,donX,donY,60,78)
     donX+=60;
-    loadstate+=1;
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[40]
 	eltear.onload=function(){
     cx6.drawImage(eltear,donX,donY,60,78)
     donX+=60;
-    loadstate+=1;
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[41]
 	eltear.onload=function(){
     cx6.drawImage(eltear,donX,donY,60,78)
     donX+=60;
-    loadstate+=1;
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[42]
 	eltear.onload=function(){
     cx6.drawImage(eltear,donX,donY,60,78)
     donX+=60;
-    loadstate+=1;
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[43]
 	eltear.onload=function(){
     cx6.drawImage(eltear,donX,donY,60,78)
     donX+=60;
-    loadstate+=1;
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
 eltear.src=eltear_src[44]
 	eltear.onload=function(){
     cx6.drawImage(eltear,donX,donY,60,78)
-    loadstate+=1;
-    cx3.fillRect(100, 200, loadstate/loadmax*600, 50);
+loadgraph();
  console.log("beteran!",loadstate)
 cx6.globalAlpha=0;
 //cx5.drawImage(canvas6,0,0,800,600);
@@ -1011,9 +924,11 @@ for(var i=0 ; i<45; i++){
   s = new createjs.Bitmap(eltear_src[i]);
   donpaiList.push(s);
   };
-  function load2(){
+function load2(){
     loadstate+=1;
     console.log(loadstate,loadmax);
+tweeNstar.paused=true;
+  stage.removeChild(Cstar);
   cx3.fillStyle = "rgb(0,0,0)";
   cx3.fillRect(0, 0, 800, 600);
   cx3.fillStyle = "#007fd9";

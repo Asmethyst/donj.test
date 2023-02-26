@@ -4159,11 +4159,11 @@ PlayertoCpu(9);}
     .to({alpha: 1,y:500},300)
     .call(drawstep);
 function drawstep(){
-  field.removeChild(drawcard);
   eltear.src=eltear_src[tumo]
   eltear.onload=function(){
   cx2.clearRect(690,500,size,sizey)
   cx2.drawImage(eltear,690,500,size,sizey);
+    field.removeChild(drawcard);
   if(reach[1] <3){
     //スキル
     if(skillswitch[1]==1 & cLock !==3){

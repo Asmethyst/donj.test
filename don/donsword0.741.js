@@ -621,20 +621,7 @@ var musicnum=0
 var donX=40;
 var donY=100;
 var loadmax=67;
-function loadgraph(){
-  cx3.fillStyle = "#e4e4e4";
-  var A=loadstate/loadmax*600;
-    cx3.fillRect(100, 200, A, 50);
-    createjs.Tween.get(Cstar)
-    .to({x:A+100},300);
-  loadstate+=1;
-  console.log(loadstate,loadmax);
-  if(loadstate>=loadmax){
-    createjs.Tween.get(Cstar)
-.to({x:700},300);
-    load2();
-  }
-}
+
 DPimg.src=atrbute_src[0];
   DPimg.onload=function(){loadgraph();
 			 }
@@ -924,11 +911,36 @@ for(var i=0 ; i<45; i++){
   s = new createjs.Bitmap(eltear_src[i]);
   donpaiList.push(s);
   };
+  }}}}}}}}}}
+}}}}}}}}}}
+  }}}}}}}}}}
+}}}}}}}}}}
+}}}}}
+
+if(loadstate <loadmax){
+  cx3.fillStyle = "rgb(0,0,0)";
+cx3.fillRect(0, 0, 800, 600);
+cx3.font = "24px 'Century Gothic'";
+cx3.fillStyle = "#e4e4e4";
+　cx3.fillText( "Now Loading…",300,360)
+}
+function loadgraph(){
+  cx3.fillStyle = "#e4e4e4";
+  var A=loadstate/loadmax*600;
+    cx3.fillRect(100, 200, A, 50);
+    createjs.Tween.get(Cstar)
+    .to({x:A+100},300);
+  loadstate+=1;
+  console.log(loadstate,loadmax);
+  if(loadstate>=loadmax){
+    createjs.Tween.get(Cstar)
+.to({x:700},300);
+    loadtitle();
+  }
+}
 function load2(){
     loadstate+=1;
     console.log(loadstate,loadmax);
-tweeNstar.paused=true;
-  stage.removeChild(Cstar);
   cx3.fillStyle = "rgb(0,0,0)";
   cx3.fillRect(0, 0, 800, 600);
   cx3.fillStyle = "#007fd9";
@@ -938,6 +950,9 @@ tweeNstar.paused=true;
   　cx3.fillText( "画面をクリック（音が出ます）",240,360)
   　cx3.fillText( "click to start",340,400)
   }
+function loadtitle(){
+tweeNstar.paused=true;
+  stage.removeChild(Cstar);
   Yakucheck();
   for(var i=0;i<6;i++){
     var A=Math.floor(Math.random()*45);
@@ -990,19 +1005,7 @@ tweeNstar.paused=true;
   .to({x:156},100)
   createjs.Tween.get(ary[11])
   .to({x:35},110)
-  .call(load2);  
-  }}}}}}}}}}
-}}}}}}}}}}
-  }}}}}}}}}}
-}}}}}}}}}}
-}}}}}
-
-if(loadstate <loadmax){
-  cx3.fillStyle = "rgb(0,0,0)";
-cx3.fillRect(0, 0, 800, 600);
-cx3.font = "24px 'Century Gothic'";
-cx3.fillStyle = "#e4e4e4";
-　cx3.fillText( "Now Loading…",300,360)
+  .call(load2); 
 }
 	canvas5.onmousemove = mouseMoveListener;
 	function mouseMoveListener(e) {
